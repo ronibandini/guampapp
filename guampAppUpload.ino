@@ -371,16 +371,14 @@ void analizarAudio(uint8_t *audio_data, size_t audio_size) {
             // Second API call to check if the transcription is serious
             Serial.println("Enviando transcripción a OpenAI para análisis...");
 
-            // Close previous connection
             client.stop();
 
-            // Connect to OpenAI API again
+            // Otra vez conectar a OpenAI
             if (!client.connect(openai_server, 443)) {
                 Serial.println("Segundo intento de conexión fallido!");
                 return;
             }
 
-            // Prepare the chat completion request
             DynamicJsonDocument chatRequestDoc(2048);
             chatRequestDoc["model"] = "gpt-3.5-turbo";
             JsonArray messages = chatRequestDoc.createNestedArray("messages");
@@ -396,7 +394,7 @@ void analizarAudio(uint8_t *audio_data, size_t audio_size) {
             String chatRequestJson;
             serializeJson(chatRequestDoc, chatRequestJson);
 
-            // Send the request
+            // Enviar request
             client.println("POST /v1/chat/completions HTTP/1.1");
             client.println("Host: " + String(openai_server));
             client.println("Authorization: Bearer " + String(openai_api_key));
@@ -406,12 +404,12 @@ void analizarAudio(uint8_t *audio_data, size_t audio_size) {
             client.println();
             client.println(chatRequestJson);
 
-            // Wait for response - Saltamos todos los headers HTTP
+            // Esperar rta
             Serial.println("Esperando respuesta de análisis...");
             String headerLine = "";
             bool headersEnd = false;
 
-            // Leer y descartar los headers HTTP
+            // Leer y descartar los headers 
             while (client.connected() && !headersEnd) {
                 headerLine = client.readStringUntil('\n');
                 if (headerLine == "\r") {
@@ -420,13 +418,10 @@ void analizarAudio(uint8_t *audio_data, size_t audio_size) {
                 }
             }
 
-            // Ahora leemos solo el contenido JSON
             String jsonResponse = "";
-            // Esta es la línea clave - leemos toda la respuesta después de los headers
             jsonResponse = client.readString();
             Serial.println("Análisis recibido (JSON):");
 
-            // Aumentamos el tamaño del documento JSON para manejar respuestas grandes
             DynamicJsonDocument analysisDoc(8192);
             DeserializationError analysisError = deserializeJson(analysisDoc, jsonResponse);
 
@@ -440,7 +435,6 @@ void analizarAudio(uint8_t *audio_data, size_t audio_size) {
                 Serial.print("Error al parsear JSON de análisis: ");
                 Serial.println(analysisError.c_str());
 
-                // Debug: Mostrar los primeros 200 caracteres de la respuesta para diagnóstico
                 Serial.println("Raw response (primeros 200 caracteres):");
                 Serial.println(jsonResponse.substring(0, 200));
 
