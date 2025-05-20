@@ -9,6 +9,8 @@ Cámara AI Cam ESP32S3 de DF Robot [https://wiki.dfrobot.com/SKU_DFR1154_ESP32_S
 2 partes impresas en 3D https://cults3d.com/en/3d-model/tool/guamp-app
 
 # Instrucciones
+Tutorial completo en https://www.hackster.io/roni-bandini/guampapp-with-esp32s3-ai-camera-module-cc7f91
+
 Entrenar un modelo en Edge Impulse y hacer Deploy como Arduino Library (asimismo es posible usar el modelo entrenado para reconocer personas)
 
 1. Copiar el zip a "Documents/arduino/libraries" 
