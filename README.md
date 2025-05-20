@@ -1,6 +1,6 @@
 ![guampapp2](https://github.com/user-attachments/assets/d5b0c2e1-1ed3-4756-bb3d-3ceed112fc35)
 
-# Guampapp
+# Guampapp (no es una app)
 Dispositivo con IA para determinar infidelidades 
 Mayo de 2025, MIT License
 
