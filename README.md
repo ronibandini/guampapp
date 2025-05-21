@@ -17,6 +17,9 @@ Estas instrucciones contemplan la instalación de un modelo para detección de p
 . Cargar SSID, pass, Telegram token, openAI token en el código .ino
 . Subir al AI Module
 
+# Video
+https://www.youtube.com/shorts/LsQOEmBrbVo
+
 # Contacto
 Roni Bandini
 https://www.instagram.com/ronibandini/
