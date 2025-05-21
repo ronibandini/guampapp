@@ -9,20 +9,13 @@ Cámara AI Cam ESP32S3 de DF Robot [https://wiki.dfrobot.com/SKU_DFR1154_ESP32_S
 2 partes impresas en 3D https://cults3d.com/en/3d-model/tool/guamp-app
 
 # Instrucciones
-Tutorial completo en https://www.hackster.io/roni-bandini/guampapp-with-esp32s3-ai-camera-module-cc7f91
+Estas instrucciones contemplan la instalación de un modelo para detección de personas. En https://www.hackster.io/roni-bandini/guampapp-with-esp32s3-ai-camera-module-cc7f91 es posible ver cómo entrenar un modelo con fotos propias.
 
-Entrenar un modelo en Edge Impulse y hacer Deploy como Arduino Library (asimismo es posible usar el modelo entrenado para reconocer personas)
-
-1. Copiar el zip a "Documents/arduino/libraries" 
-2. Reemplazar "depthwise_conv.cpp" y "conv.cpp" en "src\edge-impulse-sdk\tensorflow\lite\micro\kernels" del zip exportado por los archivos del mismo nombre incluidos en https://dfimg.dfrobot.com/5d57611a3416442fa39bffca/wiki/074b3c8aa70b013bdc7c4b39babd03b1.zip 
-3. Mover la carpeta edge_camera y sus subcarpetas a Documents/arduino/libraries/modelFolder/examples  
-4. Abrir el Arduino IDE, seleccionar el ejemplo de edge_camera, modificar la primera línea para que indique el .h del modelo. Ejemplo:
-	#include <Person_Detection_inferencing.h>
-
-5. Seleccionar en Arduino IDE la placa ESP32S3 Dev Module
-6. Seleccionar los seteos como OPI Psram, 16mg Flash, etc Detalles de esto en https://wiki.dfrobot.com/SKU_DFR1154_ESP32_S3_AI_CAM#target_5
-7. Cargar SSID, pass, Telegram token, openAI token, etc
-8. Upload
+. Desde el Arduino IDE agregar la librería https://github.com/ronibandini/guampapp/blob/main/PersonDetectionInferencing.zip
+. Seleccionar la placa ESP32S3 Dev Module
+. Configurar los seteos de OPI Psram, 16mg Flash, etc Detalles de esto en https://wiki.dfrobot.com/SKU_DFR1154_ESP32_S3_AI_CAM#target_5
+. Cargar SSID, pass, Telegram token, openAI token en el código .ino
+. Subir al AI Module
 
 # Contacto
 Roni Bandini
