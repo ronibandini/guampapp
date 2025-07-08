@@ -1,5 +1,5 @@
 // GuampApp 1.0 Mayo 2025, Roni Bandini
-// MIT Licene
+// MIT License
 // ESP32S3 Dev Module AI Camera 1.0
 
 
